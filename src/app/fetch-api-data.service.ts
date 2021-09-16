@@ -10,6 +10,7 @@ const apiUrl = 'https://sleepy-crag-80436.herokuapp.com/';
   providedIn: 'root'
 })
 export class FetchApiDataService {
+    
   //Inject the HttpClient module to the constructor params
   // This will provide HttpClient to the Entire Class, making it available via this.http
   constructor(private http: HttpClient) {
@@ -18,7 +19,7 @@ export class FetchApiDataService {
   public userRegistration(userDetails: any): Observable<any>
   {
     console.log(userDetails);
-    return this.http.post(apiUrl + 'users', userDetails).pipe
+    return this.http.post(apiUrl + 'user', userDetails).pipe
   (
     catchError(this.handleError)
     );
@@ -38,12 +39,12 @@ export class FetchApiDataService {
 }
 
 //User registration
-export class UserRegistration {
+export class getUser {
   constructor(private http:HttpClient) { }
 
-  userRegistration(): Observable<any> {
+  getUser(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + '/user', {headers: new HttpHeaders(
+    return this.http.get(apiUrl + 'user', {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       }
