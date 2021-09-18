@@ -10,7 +10,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-login-form.component.scss']
 })
 export class UserLoginFormComponent implements OnInit {
-  @Input() userData = { Username: '', Password: '', }; 
+    
+  /**
+   * Form inputs required for login
+  */
+  @Input() userData = { 
+    Username: '', 
+    Password: '',
+  } 
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -20,19 +27,25 @@ export class UserLoginFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void { }
+  /**
+   * Uses form details to login
+  */
+  userLogin(): void {
+        this.fetchApiData.userLogin(this.userData).subscribe((result) => {
+      // Logic for successful user login
+      this.dialogRef.close();
+      console.log(this.userData)
 
-  loginUser(): void {
-    // @ts-expect-error
-    this.fetchApiData.userLogin(this.userData).subscribe((response) => {
       localStorage.setItem('username', this.userData.Username);
-      localStorage.setItem('token', response.token);
+      localStorage.setItem('token', result.token);
+
+      
       this.snackBar.open(this.userData.Username, 'Welcome back!', {
         duration: 3000
       });
       this.router.navigate(['movies']);
-      // @ts-expect-error
-    }, (response) => {
-        this.snackBar.open(response, 'OK', {
+    }, (result) => {
+        this.snackBar.open(result, 'OK', {
         duration: 3000
       });
     })

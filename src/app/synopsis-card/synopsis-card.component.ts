@@ -1,16 +1,12 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-
-// custom components
-
-// material modules
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-synopsis-card',
   templateUrl: './synopsis-card.component.html',
-  styleUrls: ['./synopsis-card.component.css']
+  styleUrls: ['./synopsis-card.component.scss']
 })
-export class MovieSynopsisComponent implements OnInit {
+export class SynopsisCardComponent implements OnInit {
 
   constructor(
 
@@ -19,9 +15,9 @@ export class MovieSynopsisComponent implements OnInit {
      */
     @Inject(MAT_DIALOG_DATA)
     public data: {
-      title:string,
+      Title:string,
       imageUrl:any,
-      description:string,
+      Description:string,
     }
 
   ) { }
