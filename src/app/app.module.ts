@@ -32,6 +32,7 @@ const appRoutes: Routes = [
   { path: 'users', component: ProfileViewComponent },
   { path: 'favorites', component: FavoritesComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+  { path: 'profile', component: ProfileViewComponent },
 ];
 
 @NgModule({

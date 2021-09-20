@@ -1,4 +1,4 @@
-
+<navbar></navbar>
 <div style="display: flex;">
     <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
         <mat-card-header>
@@ -14,7 +14,7 @@
             <button
                 mat-button
                 color="primary"
-                (click)='openGenre(movie.genre.Title, movie.genre.Description)'
+                (click)='openGenre(movie.Genre.Name, movie.Genre.Description)'
             >
                 Genre
             </button>

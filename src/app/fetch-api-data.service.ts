@@ -67,11 +67,13 @@ export class FetchApiDataService {
   //user registration
   getUser(user: any): Observable<any> {
     const token = localStorage.getItem('token');
+    
     return this.http.get(apiUrl + 'users/' + user, {headers: new HttpHeaders(
-      {
+        {
         Authorization: 'Bearer ' + token,
       })}).pipe(
       catchError(this.handleError)
+      
     );
   }
 
@@ -124,7 +126,7 @@ export class FetchApiDataService {
   public addToFavorites(id: string): Observable<any> {
     const user = localStorage.getItem('username');
     const token = localStorage.getItem('token');
-    return this.http.post(apiUrl + '/user/:Username/movies/movieID' + user + '/' + id, id, {headers: new HttpHeaders(
+    return this.http.post(apiUrl + '/user/:Username/movies/movieID' + user , {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(

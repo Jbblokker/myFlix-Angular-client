@@ -4,18 +4,21 @@
     <button
         mat-button
         routerLink="/profile"
+        color="primary"
     >
     User Profile
     </button>
     <button
         mat-button
         routerLink="/favorites"
+        color="primary"
     >
     Favorite Movies
     </button>
     <button
         mat-button
-      
+        color="primary"
+        (click)="signOut()"
     >
     Log out
     </button>
