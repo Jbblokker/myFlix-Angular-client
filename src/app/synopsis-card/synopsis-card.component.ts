@@ -1,5 +1,7 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+//core modules
+import { Component, Inject, OnInit } from '@angular/core';
+
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-synopsis-card',
@@ -12,7 +14,7 @@ export class SynopsisCardComponent implements OnInit {
 
     /**
      * uses Inject to get movie details from the movie object
-     */
+    */
     @Inject(MAT_DIALOG_DATA)
     public data: {
       Title:string,

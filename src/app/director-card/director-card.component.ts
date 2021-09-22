@@ -1,6 +1,6 @@
 // core modules
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-director-card',
@@ -10,6 +10,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DirectorCardComponent implements OnInit {
 
   constructor(
+
+    /**
+     * Uses Inject to get director details 
+    */
     @Inject(MAT_DIALOG_DATA)
     public data: {
       Name: string,

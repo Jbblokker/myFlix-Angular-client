@@ -1,9 +1,11 @@
+//core modules
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { FetchApiDataService } from '../fetch-api-data.service';
 
+import { FetchApiDataService } from '../fetch-api-data.service';
 import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 
 @Component({
@@ -22,10 +24,16 @@ export class ProfileViewComponent implements OnInit {
     public router: Router,
   ) { }
 
+  /**
+   * When opening the component, gets the user
+  */
   ngOnInit(): void {
     this.getUser();
   }
 
+  /**
+   * gets user details 
+  */
   getUser(): void {
     let user = localStorage.getItem('username');
     this.fetchApiData.getUser(user).subscribe((res: any) => {
@@ -39,6 +47,9 @@ export class ProfileViewComponent implements OnInit {
     });
   }
 
+   /**
+   * deletes the user's profile 
+  */
   deleteProfile(): void {
     if(confirm('Are you sure? This cannot be undone.')) {
     this.fetchApiData.deleteUser().subscribe(() => {

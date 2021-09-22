@@ -1,9 +1,12 @@
+//core modules
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/internal/operators';
+import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+
+import { catchError } from 'rxjs/internal/operators';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
+
 
 //Declaring the api url that will provide data for the client app
 const apiUrl = 'https://sleepy-crag-80436.herokuapp.com/';
@@ -27,9 +30,10 @@ export class FetchApiDataService {
     );
   }
 
-  /**
-    * Returns endpoint for user login.
-  */
+ /**
+  * Login to the Application
+  * @param userData
+ */
   public userLogin(userData: any): Observable<any> {
     console.log(userData);
     return this.http.post(apiUrl + 'login', userData).pipe(
@@ -38,8 +42,8 @@ export class FetchApiDataService {
   }
 
   /**
-   * Delete user profile
-   * Username required.
+   * Delete user account
+   * @params username (Injected automatically, username extracted from login params)
   */
   public deleteUser(): Observable<any> {
     const user = localStorage.getItem('username');
@@ -52,7 +56,10 @@ export class FetchApiDataService {
     );
   }
 
- //get all movies 
+  /**
+    * Get all movies method
+   * @returns array of movies
+  */ 
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies', {headers: new HttpHeaders(
@@ -64,7 +71,10 @@ export class FetchApiDataService {
     );
   }
 
-  //user registration
+  /**
+    * Get all movies method
+    * @returns array of movies
+  */
   getUser(user: any): Observable<any> {
     const token = localStorage.getItem('token');
     
@@ -77,7 +87,10 @@ export class FetchApiDataService {
     );
   }
 
-  // update user 
+  /**
+   * Update user information
+   * @param userDetails, username (Injected automatically, username extracted from login params)
+  */ 
   editUser(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('username');
@@ -89,7 +102,11 @@ export class FetchApiDataService {
         catchError(this.handleError)
     );
   }
-// single movie pull
+
+  /**
+    * Get one particular movie
+    * @returns Object - data about a single movie
+  */
   getMovie(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies/:Title', {headers: new HttpHeaders(
@@ -100,7 +117,10 @@ export class FetchApiDataService {
     );
   }
 
- //pull a director
+  /**
+    * Get a Director
+    * @returns Object - data about the director of a movie
+  */
   getDirector(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + '/movies/Director/:Name', {headers: new HttpHeaders(
@@ -111,7 +131,10 @@ export class FetchApiDataService {
     );
   }
 
- //genre pull
+  /**
+   * Get a Genre
+   * @returns Object - data about genre of a movie
+  */
   getGenre(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + '/movies/genre/:Name', {headers: new HttpHeaders(
@@ -122,7 +145,9 @@ export class FetchApiDataService {
     );
   }
 
-  //add to favorites
+  /**
+   * @param id, username (Injected automatically, username extracted from login params)
+  */
   public addToFavorites(id: string): Observable<any> {
     const user = localStorage.getItem('username');
     const token = localStorage.getItem('token');
@@ -134,7 +159,12 @@ export class FetchApiDataService {
         catchError(this.handleError)
     );
   }
-//remove movie from favorites
+
+  /**
+   * Remove movie from users Favorites list
+   * @param user Username required
+   * @param id Movie id required
+  */
   removeFavoriteMovie(id: string): Observable<any> {
     const user = localStorage.getItem('username');
     const token = localStorage.getItem('token');
@@ -153,6 +183,7 @@ export class FetchApiDataService {
     return body || {};
   }
 
+  //handleError
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
     console.error('Some error occurred:', error.error.message);

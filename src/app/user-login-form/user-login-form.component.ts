@@ -1,8 +1,11 @@
+//core modules
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+
 
 @Component({ 
   selector: 'app-user-login-form', 
@@ -27,8 +30,10 @@ export class UserLoginFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void { }
+  
   /**
    * Uses form details to login
+   * if successful redirects user to movie card with all movies 
   */
   userLogin(): void {
         this.fetchApiData.userLogin(this.userData).subscribe((result) => {
