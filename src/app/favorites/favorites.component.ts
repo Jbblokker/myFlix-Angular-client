@@ -56,8 +56,9 @@ export class FavoritesComponent implements OnInit {
     * Filters movies to display only the users favorites
   */
   getUsersFavs(): void {
+    const user = localStorage.getItem('Username');
     this.fetchApiData.getUser(user).subscribe((resp:any) => {
-      this.favs = resp.favoritemovies;
+      this.favs = resp.Favorites;
       console.log(this.favs, 'favs');
       return this.favs;
     })

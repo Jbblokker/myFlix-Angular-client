@@ -28,6 +28,27 @@ export class NavBarComponent implements OnInit {
     this.userDetails = localStorage.getItem('username');
   }
 
+  
+  
+    /**
+     * navigates to "all movies"
+     */
+    openAllMovies(): void {
+      this.router.navigate(['movies']);
+    }
+  
+    /**
+     * navigates to "favoritemovies"
+     */
+    openFavorites(): void {
+      this.router.navigate(['favorites'])
+    }
+  
+    /**
+     * logs out the user by clearing the localstorage (username, token) and reloads the page
+     * then -> redirect to welcome page
+     */
+
   signOut(): void {
     localStorage.clear();
     this.router.navigate(['welcome']);

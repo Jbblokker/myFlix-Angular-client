@@ -9,7 +9,7 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 
 @Component({
-  selector: 'app-navbar',
+  selector: './profile',
   templateUrl: './profile-view.component.html',
   styleUrls: ['./profile-view.component.scss']
 })

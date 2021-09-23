@@ -1,9 +1,10 @@
+<navbar></navbar>
 <div class="movie-container" >
         <mat-card *ngFor="let movie of favorites;" style="flex: 1 1 auto;">
         <mat-card-header>
             <mat-card-title>{{movie.title}}</mat-card-title>
-            <mat-icon *ngIf="!setFavStatus(movie._id)" (click)="addToUserFavorites(movie._id, movie.title)" class="favorite-button">favorite_border</mat-icon>
-            <mat-icon *ngIf="setFavStatus(movie._id)" (click)="removeFromUserFavorites(movie._id, movie.title)" class="favorite-button-active">favorite</mat-icon>
+            <mat-icon *ngIf="!setFavStatus(movie._id)" (click)="addToUserFavorites(movie._id, movie.Title)" class="favorite-button">favorite_border</mat-icon>
+            <mat-icon *ngIf="setFavStatus(movie._id)" (click)="removeFromUserFavorites(movie._id, movie.Title)" class="favorite-button-active">favorite</mat-icon>
             <mat-card-subtitle>Directed by: {{movie.director.name}}</mat-card-subtitle>     
         </mat-card-header>
         <mat-card-content>
