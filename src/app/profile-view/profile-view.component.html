@@ -1,19 +1,23 @@
-<navbar></navbar>
-<div class="profile-container">
-  <h1>{{ user.Username }}</h1>
-  <h3>{{ user.Email }}</h3>
-  <div>
-  <button 
-    class='accnt-btn' 
-    mat-raised-button
+<body>
+<navbar class='navbar'></navbar>
+<mat-card class='user-profile' >
+  <mat-card-header>
+      <mat-card-title class='title'>{{ user.Username }}</mat-card-title>
+      <mat-card-subtitle class='title'>{{ user.Email }}</mat-card-subtitle>     
+  </mat-card-header>
+  <mat-card-content>
+    <button 
+    class='account-btn' 
+    mat-raised-button color="primary"
     (click)="openUserUpdateDialog()">
     Edit Account
   </button>
   <button 
-    class='accnt-btn' 
+    class='account-btn' 
     mat-raised-button color="warn"
     (click)="deleteProfile()">
     Delete Account
-  </button></div>
-
-</div>
+  </button>
+  </mat-card-content>
+</mat-card>
+</body>

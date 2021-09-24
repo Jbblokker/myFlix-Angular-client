@@ -1,7 +1,6 @@
 //core modules
 import { Component } from '@angular/core';
 
-
 import { FetchApiDataService } from '../fetch-api-data.service'
 import { SynopsisCardComponent } from '../synopsis-card/synopsis-card.component';
 import { DirectorCardComponent } from '../director-card/director-card.component';
@@ -41,9 +40,10 @@ export class MovieCardComponent {
   getUserFavs(): void {
     const user = localStorage.getItem('username');
     this.fetchApiData.getUser(user).subscribe((resp: any) => {
-    this.faves = resp.Favorites;
-    console.log(this.faves);
-    return this.faves;
+      console.log("User", resp)
+      this.faves = resp.FavoriteMovies;
+      console.log(this.faves);
+      return this.faves;
     });
   } 
 
@@ -100,7 +100,7 @@ export class MovieCardComponent {
    * @param Name (genre Name)
    * @param Description (genre Description)
   */
-  addToUserFavorites(id:string, title:string): void {
+   addToUserFavorites(id:string, title:string): void {
     this.fetchApiData.addToFavorites(id).subscribe((resp: any) => {
       this.snackBar.open(`${title} has been added to your favorites.`, 'OK', {
         duration: 3000,

@@ -56,9 +56,11 @@ export class FavoritesComponent implements OnInit {
     * Filters movies to display only the users favorites
   */
   getUsersFavs(): void {
-    const user = localStorage.getItem('Username');
+    const user = localStorage.getItem('username');
     this.fetchApiData.getUser(user).subscribe((resp:any) => {
-      this.favs = resp.Favorites;
+      console.log(resp)
+      this.favs = resp.FavoriteMovies;
+      
       console.log(this.favs, 'favs');
       return this.favs;
     })
@@ -72,9 +74,9 @@ export class FavoritesComponent implements OnInit {
     this.movies.forEach((movie:any) => {
       if (this.favs.includes(movie._id)) {
         this.favorites.push(movie);
-      } console.log(this.favorites, 'favorites');
+      }
     });
-    return this.favorites;
+    //eturn this.favs;
   }
 
   /**

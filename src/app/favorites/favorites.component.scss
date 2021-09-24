@@ -1,0 +1,49 @@
+.mat-typography {
+  background-color: rgb(41, 41, 43)
+}
+
+body, html {
+  background-color: rgb(41, 41, 43)
+}
+
+.mat-card {
+  min-width:300px;
+  max-width: 325px;
+  margin: 10px;
+  }
+
+.mat-card-header {
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.mat-card-header {
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.movie-image {
+  width: 325px; 
+  height: 550px;
+  text-align: center;
+
+}
+
+.mat-card-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.movies {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+

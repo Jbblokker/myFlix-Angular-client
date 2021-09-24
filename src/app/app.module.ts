@@ -12,6 +12,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -60,6 +61,7 @@ const appRoutes: Routes = [
     MatInputModule,
     MatButtonModule,
     MatCardModule,
+    MatToolbarModule,
     MatFormFieldModule,
     MatDialogModule,
     MatSnackBarModule,

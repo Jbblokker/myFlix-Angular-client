@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = 'https://sleepy-crag-80436.herokuapp.com/';
+const apiUrl = 'https://sleepy-crag-80436.herokuapp.com';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class FetchApiDataService {
   */
   public userRegistration(userData: any): Observable<any> {
     console.log(userData);
-    return this.http.post(apiUrl + 'users', userData).pipe(
+    return this.http.post(apiUrl + '/user', userData).pipe(
     catchError(this.handleError)
     );
   }
@@ -36,7 +36,7 @@ export class FetchApiDataService {
  */
   public userLogin(userData: any): Observable<any> {
     console.log(userData);
-    return this.http.post(apiUrl + 'login', userData).pipe(
+    return this.http.post(apiUrl + '/login', userData).pipe(
     catchError(this.handleError)
     );
   }
@@ -48,7 +48,7 @@ export class FetchApiDataService {
   public deleteUser(): Observable<any> {
     const user = localStorage.getItem('username');
     const token = localStorage.getItem('token');
-    return this.http.delete(apiUrl + 'users/' + user, {headers: new HttpHeaders(
+    return this.http.delete(apiUrl + '/users/' + user, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
@@ -62,7 +62,7 @@ export class FetchApiDataService {
   */ 
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'movies', {headers: new HttpHeaders(
+    return this.http.get(apiUrl + '/movies', {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
@@ -78,7 +78,7 @@ export class FetchApiDataService {
   getUser(user: any): Observable<any> {
     const token = localStorage.getItem('token');
     
-    return this.http.get(apiUrl + 'user/' + user, {headers: new HttpHeaders(
+    return this.http.get(apiUrl + '/user/' + user, {headers: new HttpHeaders(
         {
         Authorization: 'Bearer ' + token,
       })}).pipe(
@@ -93,8 +93,8 @@ export class FetchApiDataService {
   */ 
   editUser(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
-    const user = localStorage.getItem('username');
-    return this.http.put(apiUrl + '/user/:Username', {headers: new HttpHeaders(
+    const user = localStorage.getItem('Username');
+    return this.http.put(apiUrl + '/users/:Username', {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
@@ -109,7 +109,7 @@ export class FetchApiDataService {
   */
   getMovie(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'movies/:Title', {headers: new HttpHeaders(
+    return this.http.get(apiUrl + '/movies/:Title', {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
@@ -149,9 +149,9 @@ export class FetchApiDataService {
    * @param id, username (Injected automatically, username extracted from login params)
   */
   addToFavorites(id: string): Observable<any> {
-    const user = localStorage.getItem('Username');
+    const user = localStorage.getItem('username');
     const token = localStorage.getItem('token');
-    return this.http.post(apiUrl + '/users/:Username/movies/:movieID' + user + id, id,  {headers: new HttpHeaders(
+    return this.http.post(apiUrl + `/users/${user}/movies/${id}`, null, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
@@ -166,9 +166,9 @@ export class FetchApiDataService {
    * @param id Movie id required
   */
   removeFavoriteMovie(id: string): Observable<any> {
-    const user = localStorage.getItem('Username');
+    const user = localStorage.getItem('username');
     const token = localStorage.getItem('token');
-    return this.http.post(apiUrl + '/users/:Username/movies/:movieID' + user + '/' + id, id, {headers: new HttpHeaders(
+    return this.http.delete(apiUrl + `/users/${user}/movies/${id}`, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
