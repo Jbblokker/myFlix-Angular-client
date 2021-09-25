@@ -1,9 +1,12 @@
-.mat-typography {
+mat-typography {
   background-color: rgb(41, 41, 43)
 }
 
-body, html {
-  background-color: rgb(41, 41, 43)
+body {
+  background-color: rgb(41, 41, 43);
+  width: 100vw;
+  min-height: 100vh;
+  height: 2400px; 
 }
 
 .mat-card {
