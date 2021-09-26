@@ -43,7 +43,7 @@ export class MovieCardComponent {
       console.log("User", resp)
       this.faves = resp.FavoriteMovies;
       console.log(this.faves);
-      return this.faves;
+     // return this.faves;
     });
   } 
 
@@ -105,10 +105,11 @@ export class MovieCardComponent {
       this.snackBar.open(`${title} has been added to your favorites.`, 'OK', {
         duration: 3000,
       })
-      setTimeout(function() {
-        window.location.reload()}, 3000);
+      this.faves = resp.FavoriteMovies
+      // setTimeout(function() {
+      //   window.location.reload()}, 3000);
     });
-    return this.getUserFavs();
+    // return this.getUserFavs();
   }
 
   /**
@@ -138,10 +139,11 @@ export class MovieCardComponent {
      this.snackBar.open(`${Title} has been removed from favorites`, 'OK', {
        duration: 3000,
      })
-     setTimeout(function () {
-      window.location.reload();
-     }, 3500);
-     return this.getUserFavs();
+    //  setTimeout(function () {
+    //   window.location.reload();
+    //  }, 3500);
+     //return this.getUserFavs();
+     this.faves = res.FavoriteMovies;
    })
   }
 

@@ -35,7 +35,6 @@ export class FavoritesComponent implements OnInit {
     * Will get movies and favorites when initialized. 
   */
   ngOnInit(): void {
-    this.getMovies();
     this.getUsersFavs();
   }
 
@@ -61,8 +60,7 @@ export class FavoritesComponent implements OnInit {
       console.log(resp)
       this.favs = resp.FavoriteMovies;
       
-      console.log(this.favs, 'favs');
-      return this.favs;
+      this.getMovies();
     })
   }
 
